@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 import './Auth.css';
 import { useContext, useState } from 'react';
-import { authUser, signOut } from '../../services/auth';
+import { authUser } from '../../services/auth';
 import { UserContext } from '../../context/UserContext';
 
 export default function Auth() {
@@ -18,12 +18,12 @@ export default function Auth() {
 
   const submitAuth = async () => {
     // TODO
-    // const { user } = useContext(UserContext);
 
     try {
       const user = await authUser(email, password, type);
       setUser(user);
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error(e.message);
     }
     
