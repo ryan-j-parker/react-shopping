@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import { useItems } from '../../hooks/useItems';
+import { getUser } from '../../services/auth';
 import { toggleListItem, createListItem } from '../../services/items';
 
 export default function Items() {
@@ -7,8 +9,12 @@ export default function Items() {
   const [qty, setQty] = useState(0);
 
   const { items, setItems } = useItems();
-
   // TODO -- redirect the user back to auth if there is not a current user
+  const user = getUser();
+
+  if (!user) {
+    return <Redirect to="/auth/sign-in" />;
+  }
 
   const handleClick = async (item) => {
     try {
