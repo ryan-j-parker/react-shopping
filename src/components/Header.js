@@ -5,10 +5,10 @@ import { UserContext } from '../context/UserContext';
 import { signOut } from '../services/auth';
 
 export default function Header() {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [isActive, setIsActive] = useState(false);
   // TODO -- replace this user with the user from context
-  const user = { email: 'this is a placeholder' };
+  // const user = { email: 'this is a placeholder' };
 
   const handleLogout = async () => {
     try {
@@ -62,7 +62,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      {}
+      { }
     </nav>
   );
 }
